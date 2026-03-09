@@ -1,98 +1,317 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="theme-color" content="#111111"/>
+  <title>Personal Agency Scorecard (PAS)</title>
+  <style>
+    :root{
+      --bg:#0b0b0c;
+      --text:#f2f2f2;
+      --muted:#b8b8b8;
+      --card:#121214;
+      --radius:18px;
+    }
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    *{box-sizing:border-box}
 
-<title>PAS</title>
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background:radial-gradient(1200px 800px at 20% 0%, #1b1b20 0%, var(--bg) 60%);
+      color:var(--text);
+    }
 
-<link rel="stylesheet" href="styles.css">
+    .wrap{
+      max-width:980px;
+      margin:0 auto;
+      padding:28px 18px 40px;
+    }
 
+    .hero{
+      display:grid;
+      gap:12px;
+    }
+
+    h1{
+      margin:0;
+      font-size:28px;
+      letter-spacing:.2px;
+    }
+
+    h2{
+      margin:0 0 10px 0;
+      font-size:20px;
+    }
+
+    p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.55;
+    }
+
+    .tag{
+      display:inline-block;
+      width:max-content;
+      font-size:12px;
+      color:var(--muted);
+      border:1px solid rgba(255,255,255,.10);
+      padding:4px 10px;
+      border-radius:999px;
+    }
+
+    .btns{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+
+    a.btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 14px;
+      border-radius:14px;
+      font-weight:800;
+      text-decoration:none;
+      border:1px solid rgba(255,255,255,.12);
+      transition:.15s ease;
+    }
+
+    a.btn:hover{
+      transform:translateY(-1px);
+    }
+
+    .primary{
+      background:rgba(255,255,255,.92);
+      color:#111;
+      border-color:rgba(255,255,255,.6);
+    }
+
+    .ghost{
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+    }
+
+    .grid{
+      display:grid;
+      gap:14px;
+      margin-top:18px;
+    }
+
+    @media(min-width:900px){
+      .grid{grid-template-columns:1.1fr .9fr;}
+    }
+
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:var(--radius);
+      padding:18px;
+    }
+
+    .list{
+      margin:10px 0 0 18px;
+      color:var(--muted);
+    }
+
+    .list li{
+      margin:7px 0;
+      line-height:1.5;
+    }
+
+    .hr{
+      border-top:1px solid rgba(255,255,255,.10);
+      margin:16px 0;
+    }
+
+    .footer{
+      margin-top:18px;
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    code{
+      background:rgba(255,255,255,.06);
+      padding:2px 6px;
+      border-radius:8px;
+    }
+
+    .two{
+      display:grid;
+      gap:12px;
+    }
+
+    @media(min-width:900px){
+      .two{grid-template-columns:1fr 1fr;}
+    }
+
+    .step{
+      margin-top:10px;
+    }
+
+    .step ol{
+      margin:8px 0 0 18px;
+      color:var(--muted);
+    }
+
+    .step li{
+      margin:7px 0;
+      line-height:1.5;
+    }
+
+    .tip{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.5;
+    }
+
+    .tagline{
+      font-size:15px;
+      color:#eaeaea;
+      line-height:1.45;
+    }
+
+    .link{
+      color:#ffffff;
+      font-weight:700;
+      text-decoration:none;
+      border-bottom:1px solid rgba(255,255,255,.4);
+    }
+
+    .link:hover{
+      border-bottom:1px solid rgba(255,255,255,.8);
+    }
+  </style>
 </head>
-
 <body>
+  <div class="wrap">
 
-<h1>Personal Agency Scorecard</h1>
+    <div class="hero">
+      <span class="tag">PAS • Personal Agency Scorecard</span>
 
-<div class="scorecard">
+      <h1>Personal Agency Scorecard (PAS)</h1>
 
-<div class="pillar">
+      <div class="tagline">
+        Measure your day. Strengthen your agency. Improve your life—one decision at a time.
+      </div>
 
-<h2>Economic Stability</h2>
+      <p>
+        PAS is a personal instrument designed to help you see your patterns clearly,
+        align your daily behavior with your long-term goals, and strengthen your ability
+        to direct your own life intentionally.
+      </p>
 
-<label><input type="checkbox" class="score"> Avoided unnecessary spending</label>
-<label><input type="checkbox" class="score"> Strengthened income skills</label>
-<label><input type="checkbox" class="score"> Reviewed finances</label>
+      <div class="btns">
+        <a class="btn primary" href="./app/">Open the PAS App</a>
 
-</div>
+        <a class="btn ghost" href="./app/"
+           onclick="alert('Tip: On iPhone, tap Share → Add to Home Screen after the app opens.'); return true;">
+          Install on Phone
+        </a>
+      </div>
+    </div>
 
-<div class="pillar">
+    <div class="grid">
 
-<h2>Intellectual Development</h2>
+      <div class="card">
+        <h2>How it works</h2>
 
-<label><input type="checkbox" class="score"> 30 min learning</label>
-<label><input type="checkbox" class="score"> Limited mindless media</label>
-<label><input type="checkbox" class="score"> Recorded insight</label>
+        <ul class="list">
+          <li>Answer 15 honest yes/no questions across five pillars</li>
+          <li>Each pillar generates a color score: Green, Yellow, Orange, or Red</li>
+          <li>You receive a constructive message and one action step for tomorrow</li>
+          <li>Track your weekly trends and export your progress as a personal PDF report</li>
+        </ul>
 
-</div>
+        <div class="tip">
+          PAS is private. Your data stays on your device unless you choose to export it.
+        </div>
+      </div>
 
-<div class="pillar">
+      <div class="card">
+        <h2>Founder Note</h2>
 
-<h2>Social Relationships</h2>
+        <p>
+          PAS was created to solve a personal problem: how to know, with honesty,
+          whether each day strengthened or weakened your future.
+        </p>
 
-<label><input type="checkbox" class="score"> Strengthened relationship</label>
-<label><input type="checkbox" class="score"> Avoided draining influence</label>
-<label><input type="checkbox" class="score"> Contributed positively</label>
+        <p style="margin-top:10px;">
+          Most people live without clear feedback. Days pass. Weeks pass. Years pass.
+          Without measurement, there is no clarity. Without clarity, there is no control.
+        </p>
 
-</div>
+        <p style="margin-top:10px;">
+          PAS gives you that clarity. It shows you where you are aligned and where you are not.
+          It gives you one step forward each day. Over time, those steps compound.
+        </p>
 
-<div class="pillar">
+        <p style="margin-top:10px;">
+          Agency is not given. It is practiced. PAS helps you practice it daily.
+        </p>
 
-<h2>Discipline & Health</h2>
+        <p style="margin-top:10px;color:#eaeaea;">
+          — <em>PAS Founder</em>
+        </p>
+      </div>
 
-<label><input type="checkbox" class="score"> Exercised</label>
-<label><input type="checkbox" class="score"> Protected sleep</label>
-<label><input type="checkbox" class="score"> Kept promise to self</label>
+    </div>
 
-</div>
+    <div class="card" style="margin-top:14px;">
+      <h2>Install PAS on your phone</h2>
 
-<div class="pillar">
+      <div class="two">
 
-<h2>Agency</h2>
+        <div class="step">
+          <div class="tag">iPhone (Safari)</div>
 
-<label><input type="checkbox" class="score"> Long-term decision</label>
-<label><input type="checkbox" class="score"> Planned tomorrow</label>
-<label><input type="checkbox" class="score"> Said no to distraction</label>
+          <ol>
+            <li>
+              Open the PAS app:
+              <a class="link" href="./app/">Open the PAS App</a>
+            </li>
+            <li>Tap the Share icon (square with arrow)</li>
+            <li>Tap Add to Home Screen</li>
+            <li>Tap Add</li>
+          </ol>
+        </div>
 
-</div>
+        <div class="step">
+          <div class="tag">Android (Chrome)</div>
 
-</div>
+          <ol>
+            <li>
+              Open the PAS app:
+              <a class="link" href="./app/">Open the PAS App</a>
+            </li>
+            <li>Tap the ⋮ menu</li>
+            <li>Tap Install app</li>
+            <li>Tap Install</li>
+          </ol>
+        </div>
 
-<div class="results">
+      </div>
 
-<h2>Total Score</h2>
+      <div class="hr"></div>
 
-<div id="total">0 / 15</div>
+      <div class="tip">
+        After installing, PAS works offline and can be opened like a normal app.
+      </div>
 
-<h2>Daily Agency Score</h2>
+      <div class="tip">
+        Share PAS using this link:
+        <code>https://liamcavin-aka.github.io/pas-pwa/app/</code>
+      </div>
+    </div>
 
-<div id="agencyScore">0 / 100</div>
+    <div class="footer">
+      Personal Agency Scorecard (PAS) • Offline-ready personal development tool
+    </div>
 
-<div class="target">
-Target: +1 point per week
-</div>
-
-</div>
-
-<button onclick="saveDay()">Save Today</button>
-
-<h2>Weekly Streak</h2>
-
-<div id="streak">0 weeks</div>
-
-<script src="app.js"></script>
-
+  </div>
 </body>
 </html>
