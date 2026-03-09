@@ -1,8 +1,0 @@
-{
-"name":"Personal Agency Scorecard",
-"short_name":"PAS",
-"start_url":"/pas-pwa/app/",
-"display":"standalone",
-"background_color":"#111111",
-"theme_color":"#111111"
-}
