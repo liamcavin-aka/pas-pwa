@@ -1,27 +1,152 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>PAS App</title>
-
-<link rel="stylesheet" href="styles.css">
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#111111" />
+  <title>Personal Agency Scorecard (PAS)</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icon-192.png" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
+  <header class="app-header">
+    <div>
+      <h1>Personal Agency Scorecard <span class="muted">(PAS)</span></h1>
+      <div class="sub">Daily alignment across five pillars. Weekly trends. Shareable report.</div>
+    </div>
+    <div class="header-actions">
+      <button id="tabDaily" class="ghost">Daily</button>
+      <button id="tabWeekly" class="ghost">Weekly</button>
+      <button id="btnToday" class="ghost">Today</button>
+      <button id="btnExport" class="ghost">Export CSV</button>
+    </div>
+  </header>
 
-<h1>Personal Agency Scorecard</h1>
+  <main class="container">
+    <section id="viewDaily" class="card">
+      <div class="row">
+        <label for="date" class="label">Date</label>
+        <input id="date" type="date" />
+      </div>
 
-<p>Daily Agency Score</p>
+      <div id="pillars"></div>
 
-<div id="score">0 / 100</div>
+      <div class="divider"></div>
 
-<button onclick="increaseScore()">Add +10</button>
+      <section class="overall">
+        <div class="overall-left">
+          <div class="label">Overall</div>
 
-<script src="app.js"></script>
+          <div class="overall-score">
+            <span id="overallScore">0</span><span class="muted">/15</span>
+          </div>
 
+          <div class="daily-agency">
+            <span class="label">Daily Agency Score</span>
+            <div class="daily-agency-score">
+              <span id="dailyAgencyScore">0</span><span class="muted">/100</span>
+            </div>
+            <div class="daily-agency-target muted small">
+              Target: +1 point per week
+            </div>
+          </div>
+
+          <div id="overallColorBadge" class="badge gray">—</div>
+        </div>
+
+        <div class="overall-right">
+          <div class="label">Daily Closeout</div>
+          <textarea id="winToday" rows="2" placeholder="One win today (short, real)"></textarea>
+          <textarea id="fixTomorrow" rows="2" placeholder="One fix tomorrow (specific action)"></textarea>
+        </div>
+      </section>
+
+      <div class="actions">
+        <button id="btnSave" class="primary">Save Day</button>
+        <button id="btnReset" class="danger">Clear Day</button>
+      </div>
+
+      <div id="saveStatus" class="status"></div>
+    </section>
+
+    <section id="viewWeekly" class="card hidden">
+      <div class="row">
+        <div>
+          <h2 style="margin:0;">Weekly Dashboard</h2>
+          <div class="muted small">Pick a week range. View color counts and pillar averages. Export a PDF report.</div>
+        </div>
+      </div>
+
+      <div class="weekly-controls">
+        <div class="row">
+          <div class="ctrl">
+            <label class="label" for="weekStart">Week start</label>
+            <input id="weekStart" type="date"/>
+          </div>
+          <div class="ctrl">
+            <label class="label" for="weekEnd">Week end</label>
+            <input id="weekEnd" type="date"/>
+          </div>
+          <div class="ctrl actions-inline">
+            <button id="btnThisWeek" class="ghost">This Week</button>
+            <button id="btnLastWeek" class="ghost">Last Week</button>
+            <button id="btnPDF" class="primary">Download Weekly PDF</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="weekly-metrics">
+        <div class="metric">
+          <div class="label">Weekly Agency Score</div>
+          <div class="metric-big"><span id="weeklyAgencyScore">—</span><span class="muted">/100</span></div>
+          <div class="muted small" id="weeklyAgencySub">—</div>
+        </div>
+
+        <div class="metric">
+          <div class="label">Weekly Improvement Streak</div>
+          <div class="metric-big"><span id="weeklyStreak">—</span><span class="muted"> weeks</span></div>
+          <div class="muted small" id="weeklyStreakSub">Best: —</div>
+        </div>
+      </div>
+
+      <div class="weekly-grid">
+        <div class="weekly-card">
+          <div class="label">Overall color counts (days)</div>
+          <canvas id="overallChart" width="800" height="240"></canvas>
+          <div id="overallCounts" class="counts"></div>
+        </div>
+
+        <div class="weekly-card">
+          <div class="label">Pillar averages (0–3)</div>
+          <canvas id="pillarChart" width="800" height="240"></canvas>
+          <div id="pillarAverages" class="counts"></div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <h3 style="margin:0 0 8px 0;">Days in range</h3>
+      <div id="weeklyDays" class="history"></div>
+
+      <div id="weeklyStatus" class="status"></div>
+    </section>
+
+    <section class="card">
+      <h2>History</h2>
+      <div class="muted small">Last 30 saved days on this device.</div>
+      <div id="history" class="history"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span class="muted small">PAS v1.1 • Offline-ready PWA • Data stored locally on your device</span>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
